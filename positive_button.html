@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- set the character encoding to make sure everything shows up correctly -->
+  <meta charset="UTF-8">
+  <!-- make the page responsive so it works on all devices -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- the title that shows up in the browser tab -->
+  <title>button of positivity</title>
+
+  <style>
+    /* style for the whole page */
+    body {
+      display: flex; /* use flexbox to center everything */
+      justify-content: center; /* center content horizontally */
+      align-items: center; /* center content vertically */
+      height: 100vh; /* make the body take up the whole height of the screen */
+      margin: 0; /* remove default margin around the body */
+      background-color: #f4f4f4; /* light gray background */
+      font-family: arial, sans-serif; /* use arial font */
+    }
+
+    /* style for the button */
+    #mysterybutton {
+      padding: 20px 40px; /* make the button bigger by adding space inside it */
+      font-size: 2rem; /* make the text inside the button bigger */
+      color: white; /* make the text color white */
+      background-color: #db7093; /* set a pink color for the button */
+      border: none; /* remove the default border around the button */
+      border-radius: 10px; /* round the corners of the button */
+      cursor: pointer; /* change the cursor to a hand when you hover over the button */
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* add a shadow under the button to make it look 3D */
+      transition: transform 0.2s, background-color 0.2s; /* make the button change smoothly when hovered or clicked */
+      
+    }
+
+    /* when the mouse hovers over the button */
+    #mysterybutton:hover {
+      background-color: #b64d9b; /* change the button color*/
+      transform: scale(1.1); /* make the button grow a little bit */
+    }
+
+    /* when the button is clicked */
+    #mysterybutton:active {
+      transform: scale(0.9); /* make the button shrink a little bit to show it was clicked */
+    }
+  </style>
+</head>
+<body>
+  <!-- this is the button -->
+  <button id="mysterybutton">press for positivity! 💖</button>
+
+  <!-- where we add the javascript -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti"></script> <!-- link to the confetti library -->
+
+  <script>
+    // list of positive message image URLs with their respective websites
+    const actions = [
+      function() {
+        window.location.href = "https://i.pinimg.com/736x/9c/36/61/9c3661803aa4959840031ef266f0c228.jpg"; // redirect to image 1
+      },
+      function(){
+        window.location.href="https://i.pinimg.com/736x/7d/f7/27/7df7275927d16f378e13b07a61c2afa5.jpg"; // redirect to image 2
+      },
+      function(){
+        window.location.href="https://i.pinimg.com/736x/ec/61/47/ec61473ba317caba9f72723925407219.jpg"; // redirect to image 3
+      }
+    ];
+  
+    // when the button is clicked, confetti will trigger and a random picture will be chosen
+    document.getElementById("mysterybutton").onclick = function() {
+      confetti(); // always trigger the confetti
+  
+      const randomAction = actions[Math.floor(Math.random() * actions.length)];
+      
+      // Use setTimeout to allow confetti to show before redirecting
+      setTimeout(function() {
+        randomAction(); // then redirect to a random website containing a positive image
+      }, 1000); // delay of 1000 milliseconds (1 second) before redirecting
+    };
+  </script>
+  
